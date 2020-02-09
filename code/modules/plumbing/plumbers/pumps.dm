@@ -35,6 +35,7 @@
 	return ..()
 
 /obj/machinery/power/liquid_pump/wrench_act(mob/living/user, obj/item/I)
+	..()
 	default_unfasten_wrench(user, I)
 	return TRUE
 ///please note that the component has a hook in the parent call, wich handles activating and deactivating
@@ -74,7 +75,7 @@
 		return
 	geyser.reagents.trans_to(src, pump_power)
 
-/obj/machinery/power/liquid_pump/update_icon()
+/obj/machinery/power/liquid_pump/update_icon_state()
 	if(powered)
 		icon_state = initial(icon_state) + "-on"
 	else if(panel_open)

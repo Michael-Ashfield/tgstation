@@ -29,8 +29,10 @@ Bonus
 	symptom_delay_min = 25
 	symptom_delay_max = 80
 	var/remove_eyes = FALSE
-	threshold_desc = "<b>Resistance 12:</b> Weakens extraocular muscles, eventually leading to complete detachment of the eyes.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_descs = list(
+		"Resistance 12" = "Weakens extraocular muscles, eventually leading to complete detachment of the eyes.",
+		"Stealth 4" = "The symptom remains hidden until active.",
+	)
 
 /datum/symptom/visionloss/Start(datum/disease/advance/A)
 	if(!..())
@@ -45,7 +47,7 @@ Bonus
 		return
 	var/mob/living/carbon/M = A.affected_mob
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
-	if(istype(eyes))
+	if(eyes)
 		switch(A.stage)
 			if(1, 2)
 				if(prob(base_message_chance) && !suppress_warning)
